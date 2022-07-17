@@ -18,25 +18,25 @@
 
 .spinner-sector-blue{
   border-top-color: blue;
-  --duration:80ms;
+  --duration:3000ms;
   --timing:ease;
 }
 
 .spinner-sector-green{
   border-right-color: lightgreen;
-  --duration:500ms;
+  --duration:5000ms;
   --timing:ease-in-out;
 }
 
 .spinner-sector-black{
   border-right-color: grey;
-  --duration:250ms;
+  --duration:900ms;
   --timing:ease;
 }
 
 .spinner-sector-maroon{
   border-bottom-color: maroon;
-  --duration:150ms;
+  --duration:1500ms;
   --timing:ease-in-out;
 }
 
@@ -59,4 +59,34 @@
   100%{
     color: rgba(0, 0, 0, .1);
   }
+}
+
+/* ++++++++++++++++ Second Spinner ++++++++++++++++++++ */
+.spinner-2{
+  animation: text-color 1.4s ease-in-out  infinite alternate;
+}
+
+.spinner-2::before,
+.spinner-2::after{
+  content: "";
+  width: 100%;
+  height: 100%;
+  border: 15px solid transparent;
+  border-radius: 50%;
+  mix-blend-mode: overlay;
+  animation: rotate var(--duration) var(--timing) infinite;
+  pointer-events: none;
+  position: absolute;
+}
+
+.spinner-2::before{
+  border-right-color: green;
+  --duration:900ms;
+  --timing:ease;
+}
+
+.spinner-2::after{
+  border-bottom-color: maroon;
+  --duration:1500ms;
+  --timing:ease-in-out;
 }
