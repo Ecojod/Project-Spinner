@@ -1,18 +1,62 @@
+.spinner{
+  animation: text-color 1.4s ease-in-out  infinite alternate;
+}
+
 .spinner-sector{
   border: 15px solid transparent;
   border-radius: 50%;
   mix-blend-mode: overlay;
-  animation: 150ms ease-in-out infinite;
+  animation: rotate var(--duration) var(--timing) infinite;
+  pointer-events: none;
 }
 
 .spinner-sector-red{
   border-left-color: lightcoral;
+  --duration:1.5s;
+  --timing:ease-in-out;
 }
 
 .spinner-sector-blue{
-  border-top-color: lightblue;
+  border-top-color: blue;
+  --duration:80ms;
+  --timing:ease;
 }
 
 .spinner-sector-green{
   border-right-color: lightgreen;
+  --duration:500ms;
+  --timing:ease-in-out;
+}
+
+.spinner-sector-black{
+  border-right-color: grey;
+  --duration:250ms;
+  --timing:ease;
+}
+
+.spinner-sector-maroon{
+  border-bottom-color: maroon;
+  --duration:150ms;
+  --timing:ease-in-out;
+}
+
+@keyframes rotate{
+  0%{
+    transform: rotate(0);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes text-color{
+  0%{
+    color: rgba(0, 0, 0, 1);
+  }
+  50%{
+    color: rgba(0, 0, 0, .5);
+  }
+  100%{
+    color: rgba(0, 0, 0, .1);
+  }
 }
