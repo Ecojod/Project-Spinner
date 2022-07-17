@@ -12,7 +12,7 @@ export default function Spinner() {
                     <div className="spinner-sector absolute w-full h-full spinner-sector-maroon"></div>
                 </div>
                 <div className="spinner-2 flex justify-center h-80 w-80 items-center overflow-hidden relative">
-                    <h1 className='text-3xl w-fit'>Loading</h1>
+                    <h1 className='text-3xl w-fit'>Fuck You For Now</h1>
                 </div>
             </section>
         </>
