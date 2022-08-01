@@ -1,3 +1,56 @@
+
+.navbar .list-items a{
+  transition: all .3s ease;
+  padding: 10px 14px;
+}
+.navbar .list-items a:hover{
+  background:#95ecd7 ;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++ Loading Bar ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+.loader-body{
+  width: 200px;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 30px;
+  background-color: #fff;
+}
+.loader-width{
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  transform: scale(0);
+  transform-origin:0 0;
+  animation: progress 1s cubic-bezier(0.01, 1.06, 0.71, 1) forwards;
+  transition:all .3s;
+}
+.loader{
+  background: repeating-linear-gradient(
+    to right,
+    #1abcfe 0%, #a259ff 10%,
+    #000000 20%, #926e64 30%,
+    #ffb6e6 40%, #a3deff 50%,
+    #ffffff 60%, #ff0000 70%,
+    #ffe462 80%, #0acf83 90%,
+    #1abcfe 100%
+  );
+  background-size: 10%;
+  background-repeat: repeat;
+  width: 6000px;
+  height: 100%;
+  transform: translate(-600px);
+  animation:move 4s linear infinite;
+}
+@keyframes move{
+  0% {transform:translate(-600px);}
+  100% {transform:translate(0);}
+}
+@keyframes progress{
+  0% {transform:scaleX(0.001);}
+  100% {transform:scaleX(0.97);}
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++ Spinner +++++++++++++++++++++++++++++++++++++++++++++++++++ */
 .spinner{
   animation: text-color 1.4s ease-in-out  infinite alternate;
 }
@@ -51,7 +104,7 @@
 
 @keyframes text-color{
   0%{
-    color: rgba(0, 0, 0, 1);
+    color: rgba(1, 1, 1, 1);
   }
   50%{
     color: rgba(0, 0, 0, .5);
@@ -64,6 +117,7 @@
 /* ++++++++++++++++ Second Spinner ++++++++++++++++++++ */
 .spinner-2{
   animation: text-color 1.4s ease-in-out  infinite alternate;
+  
 }
 
 .spinner-2::before,
@@ -89,4 +143,186 @@
   border-bottom-color: maroon;
   --duration:1500ms;
   --timing:ease-in-out;
+}
+
+
+/* +++++++++++++++++++++++++++++++++++++ Spinner third ++++++++++++++++++++++++++++++++++++++++++++++= */
+.spinner-third h1{
+  animation: text-color 1.4s ease-in-out  infinite alternate;
+
+}
+.spinner-third::before, 
+.spinner-third::after{
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+}
+
+.spinner-third::before{
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(0deg, #ff00cc 0%, #333399 100%);
+  animation: spin .5s infinite linear;
+}
+
+.spinner-third::after{
+  width: 88%;
+  height: 88%;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%, -50%);  
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+/* ++++++++++++++++++++++++++++++++++++++ Read More Button +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+.read-more-button{
+  border: 2px solid ;
+}
+
+.read-more-button::after,
+.read-more-button:before{
+  content: "";
+  position: absolute;
+  width: 50px ;
+  height:50px;
+  border: inherit;
+  transition: all .5s;
+}
+
+.read-more-button::after{
+  bottom: -15px;
+  right: -15px;
+  border-width: 0 3px 3px 0;
+}
+
+.read-more-button::before{
+  top: -15px ;
+  left: -15px ;
+  border-width: 3px 0 0 3px ;
+}
+
+.read-more-button:hover::after,
+.read-more-button:hover::before{
+  width: calc(100% + 30px);
+  height: calc(100% + 30px);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++ Search Button +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+button{
+  display: none;
+}
+
+input:not(:placeholder-shown) + button{
+  display: block;
+}
+
+.button-container{
+  border: double 10px transparent;
+  border-radius: 10px;
+  background-image:
+  linear-gradient(#1d2a3a, #1d2a3a),
+  linear-gradient(to right, #d78eca, #98a3fb);
+  background-origin:border-box;
+  background-clip:content-box, border-box;
+}
+
+.button-container:nth-child(odd):before{
+  content: "Hello this is Tushar ..";
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  position: absolute;
+  background: rgba(0, 0, 0, .7);
+  opacity: 0;
+  transition:  opacity .2s ease;
+}
+.button-container:nth-child(even):before{
+  content: "Hello this is Sumit ..";
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  position: absolute;
+  background: rgba(37, 47, 78, 0.7);
+  opacity: 0;
+  transition:  opacity .2s ease;
+}
+
+.button-container:hover::before{
+  opacity: 1;
+  transition: opacity .2s ease;
+  color: white;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++ Rotating 3D Cube +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+.wrapper{
+  --imgsize:300px;
+  --transform:calc(var(var(--imgsize)/2));
+  perspective: 800px;
+}
+
+.wrapper:hover{
+  transform:scale(1.1);
+}
+
+.cube{
+  transform-style: preserve-3d;
+  width: var(--imgsize);
+  height: var(--imgsize);
+  animation: rotateCube 10s ease-in-out infinite;
+  transform-origin:center center;
+}
+
+.side{
+  width: inherit;
+  height: inherit;
+  background-color: #333;
+  opacity: .95;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.wrapper:hover .side{
+  opacity: 1;
+}
+
+.back{
+  transform:translateZ(-150px) rotateX(180deg);
+}
+
+.left{
+  transform:translateX(-150px) rotateY(90deg);
+}
+
+.right{
+  transform:translateX(var(--transform)) rotate(90deg);
+}
+
+.top{
+  transform: translateY(-150px) rotateX(90deg);
+}
+
+.bottom{
+  transform: translateY(var(--transform)) rotateX(270deg);
+}
+
+.front{
+  transform: translateZ(var(--transform)) ;
+}
+
+@keyframes rotateCube{
+  0% {transform:rotateX(0)}
+  12.5% {transform:rotateY(90deg)}
+  25% {transform:rotateY(270deg)}
+  37.5% {transform:rotateY(270deg)}
+  50% {transform:rotateY(360deg)}
+  62.5% {transform:rotateX(90deg)}
+  75% {transform:rotateX(180deg)}
+  87.5% {transform:rotateX(270deg)}
+  100% {transform:rotateX(360deg)}
 }
